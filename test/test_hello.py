@@ -55,6 +55,6 @@ class CovApi:
 #
 if __name__ == '__main__':
     CovApi = CovApi()
-    # t = CovApi.get_accounts()
+    t = CovApi.get_accounts()
 
     t = CovApi.get_chain_ids()
