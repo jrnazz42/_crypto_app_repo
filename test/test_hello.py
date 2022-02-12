@@ -13,13 +13,14 @@ class CovApi:
     def __init__(self):
         # read env file
         env = Env()
-        env_file = os.path.join(Path(__file__).resolve().parent, ".env")
-        env.read_env(env_file)
+        env_file_mm = os.path.dirname(os.path.dirname(__file__))+"/.env"
+        env_file = os.path.join(os.path.dirname(os.path.dirname(__file__)),".env")
+        env.read_env(env_file_mm)
         self.COVALENT_API_KEY = env("COVALENT_API_KEY")
 
     def get_accounts(self, account='0xede7bc793b4f962f5ba1a2fe3a86dfe219f83638'):
         url = 'https://api.covalenthq.com/v1/1/address/' + account + '/transactions_v2/?&key={covalent_api_key}'.format(
-            covalent_api_key=COVALENT_API_KEY)
+            covalent_api_key=self.COVALENT_API_KEY)
         resp = requests.get(url)
         resp = resp.json()
         data = resp['data']['items']
@@ -28,16 +29,19 @@ class CovApi:
         # df = pd.read_json(resp['data'])
         df1 = df.values
 
-        # todo where to dowmlaod this prob google docs
+        # todo where to download this prob google docs
         # fileobj = open('transaction-dump-' + acc + '.json', 'a+')
         # fileobj.write(json.dumps(resp))
         # fileobj.close()
 
         pagination = resp['data']['pagination']
+        pagination = pd.DataFrame(pagination.items())
         chain_id = resp['data']['chain_id']
 
-        print("Chain_Id " + str(chain_id))
-        print("pagination " + pagination)
+        print(f"Chain_Id {chain_id}")
+
+        print("Pagination Details")
+        print(pagination)
 
         print("Get account " + account + ' completed ')
 
@@ -55,6 +59,9 @@ class CovApi:
 #
 if __name__ == '__main__':
     CovApi = CovApi()
-    t = CovApi.get_accounts()
+    get_accounts = CovApi.get_accounts()
+    print(get_accounts)
 
-    t = CovApi.get_chain_ids()
+    get_chain_ids = CovApi.get_chain_ids()
+    print(get_chain_ids)
+

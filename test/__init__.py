@@ -1,3 +1,1 @@
-from test.test_hello import *
-from test.test_hello2 import *
-from test.test_api import *
+__all__ = ["test_hello", "test_hello2", "test_api"]

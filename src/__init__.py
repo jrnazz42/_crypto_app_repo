@@ -1,2 +1,1 @@
-from src.app import *
-from .nomics_api_test import *
+__all__ = ["app", "nomics_api_test"]
