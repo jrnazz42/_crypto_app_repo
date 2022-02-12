@@ -154,13 +154,8 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/test/test_hello.py</url>
-          <line>45</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/test/test_hello.py</url>
-          <line>40</line>
-          <option name="timeStamp" value="6" />
+          <line>65</line>
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
